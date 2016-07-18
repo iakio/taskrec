@@ -2,8 +2,10 @@
   "private": true,
   "scripts": {
     "test": "mocha --require babel-register test",
-    "test:watch": "mocha -w test --require babel-register test",
-    "build": "browserify -o index.js -t babelify src/index.js"
+    "watch:test": "mocha -w -G --require babel-register test",
+    "build": "browserify -o index.js -t babelify src/index.js",
+    "watch:build": "watchify src/index.js -o index.js -t babelify -v",
+    "watch": "npm-run-all -l --parallel watch:build watch:test"
   },
   "devDependencies": {
     "babel-plugin-espower": "^2.3.1",
@@ -11,8 +13,11 @@
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.9.0",
     "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
     "mocha": "^2.5.3",
-    "power-assert": "^1.4.1"
+    "npm-run-all": "^2.3.0",
+    "power-assert": "^1.4.1",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
     "react": "^15.2.1",
